@@ -1,0 +1,1543 @@
+Put your HTML text here<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تطبيق يوم العلم السعودي</title>
+  <meta name="theme-color" content="#0b7a3c" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-900: #05502a;
+      --green-800: #0b7a3c;
+      --green-700: #128a46;
+      --green-600: #179b4e;
+      --green-100: #eaf8ef;
+      --gold: #d4af37;
+      --gold-soft: #f4e7af;
+      --white: #ffffff;
+      --ink: #163123;
+      --muted: #587162;
+      --card: rgba(255,255,255,0.78);
+      --border: rgba(7, 89, 43, 0.14);
+      --shadow: 0 18px 60px rgba(5,80,42,0.14);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --transition: 240ms ease;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Tajawal', system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(212,175,55,0.18), transparent 18%),
+        radial-gradient(circle at 88% 10%, rgba(23,155,78,0.18), transparent 24%),
+        linear-gradient(180deg, #f8fff8 0%, #f3fbf5 48%, #eef8f2 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto auto 10% -120px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(11,122,60,0.08), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(4px);
+    }
+
+    body::after {
+      inset: 12% -120px auto auto;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(212,175,55,0.10), transparent 70%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+      padding-bottom: 40px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 10px;
+      z-index: 12;
+      margin-top: 14px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(255,255,255,0.85);
+      backdrop-filter: blur(16px);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background:
+        linear-gradient(135deg, rgba(11,122,60,0.96), rgba(23,155,78,0.96));
+      display: grid;
+      place-items: center;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.32), 0 8px 22px rgba(11,122,60,0.22);
+      color: white;
+      font-size: 1.25rem;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 1.02rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .brand p {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav a, .ghost-btn, .solid-btn, .chip {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 16px;
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition), color var(--transition);
+      font-weight: 700;
+    }
+
+    .nav a, .chip, .ghost-btn {
+      background: rgba(11,122,60,0.08);
+      color: var(--green-900);
+    }
+
+    .solid-btn {
+      background: linear-gradient(135deg, var(--green-800), var(--green-600));
+      color: white;
+      box-shadow: 0 10px 28px rgba(11,122,60,0.22);
+    }
+
+    .nav a:hover, .ghost-btn:hover, .solid-btn:hover, .chip:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 20px;
+      align-items: stretch;
+      padding: 24px 0 14px;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-main {
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(212,175,55,0.18), transparent 28%),
+        radial-gradient(circle at 0% 100%, rgba(23,155,78,0.16), transparent 28%),
+        linear-gradient(135deg, rgba(255,255,255,0.92), rgba(239,250,242,0.88));
+    }
+
+    .hero-main::before,
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      inset: auto -2% -10% auto;
+      width: 74%;
+      height: 52%;
+      border-radius: 44% 56% 70% 30% / 50% 40% 60% 50%;
+      background: linear-gradient(135deg, rgba(11,122,60,0.13), rgba(23,155,78,0.05));
+      transform: rotate(-8deg);
+      animation: wave 9s ease-in-out infinite alternate;
+    }
+
+    .hero-main::after {
+      inset: auto auto -14% -10%;
+      width: 50%;
+      height: 44%;
+      background: linear-gradient(135deg, rgba(212,175,55,0.16), rgba(212,175,55,0.03));
+      animation-duration: 11s;
+      transform: rotate(8deg);
+    }
+
+    @keyframes wave {
+      from { transform: translateY(0) rotate(-8deg) scale(1); }
+      to { transform: translateY(-12px) rotate(-4deg) scale(1.03); }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(11,122,60,0.10);
+      color: var(--green-900);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .hero-main h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.1;
+      margin: 6px 0 10px;
+      font-weight: 900;
+      max-width: 12ch;
+    }
+
+    .hero-main .lead {
+      font-size: 1.15rem;
+      line-height: 1.95;
+      margin: 0 0 18px;
+      color: #244634;
+      max-width: 58ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 760px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(7,89,43,0.10);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(5,80,42,0.07);
+    }
+
+    .stat .value {
+      font-size: 1.55rem;
+      font-weight: 900;
+      color: var(--green-900);
+      margin-bottom: 6px;
+    }
+
+    .stat .label {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .hero-side {
+      padding: 22px;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+      background:
+        linear-gradient(180deg, rgba(10,94,47,0.96), rgba(12,122,60,0.98));
+      color: white;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-side::before,
+    .hero-side::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.16), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-side::before { width: 240px; height: 240px; top: -90px; left: -50px; }
+    .hero-side::after { width: 200px; height: 200px; bottom: -60px; right: -40px; }
+
+    .date-badge {
+      position: relative;
+      border-radius: 26px;
+      padding: 22px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    .date-badge .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .date-badge h3 {
+      margin: 0;
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .date-badge p {
+      margin: 8px 0 0;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.94);
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .mini-card {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .mini-card .mini-title {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .mini-card strong {
+      display: block;
+      font-size: 1.18rem;
+      line-height: 1.6;
+    }
+
+    .section {
+      padding: 18px 0 8px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .section-head h3 {
+      margin: 0;
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-weight: 900;
+    }
+
+    .section-head p {
+      margin: 8px 0 0;
+      line-height: 1.9;
+      color: var(--muted);
+      max-width: 64ch;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .cards-4,
+    .cards-3,
+    .cards-2 {
+      display: grid;
+      gap: 16px;
+    }
+
+    .cards-4 { grid-template-columns: repeat(4, 1fr); }
+    .cards-3 { grid-template-columns: repeat(3, 1fr); }
+    .cards-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .info-card,
+    .timeline-card,
+    .tool-card,
+    .quote-card,
+    .quiz-card,
+    .custom-card {
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-card:hover,
+    .timeline-card:hover,
+    .tool-card:hover,
+    .quote-card:hover,
+    .quiz-card:hover,
+    .custom-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 42px rgba(5,80,42,0.14);
+      border-color: rgba(11,122,60,0.22);
+    }
+
+    .info-icon,
+    .timeline-year,
+    .quote-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 1.45rem;
+      background: linear-gradient(135deg, rgba(11,122,60,0.18), rgba(212,175,55,0.22));
+      color: var(--green-900);
+      margin-bottom: 14px;
+      font-weight: 900;
+    }
+
+    .info-card h4,
+    .timeline-card h4,
+    .tool-card h4,
+    .quote-card h4,
+    .custom-card h4,
+    .quiz-card h4 {
+      margin: 0 0 10px;
+      font-size: 1.16rem;
+      font-weight: 800;
+    }
+
+    .info-card p,
+    .timeline-card p,
+    .tool-card p,
+    .quote-card p,
+    .custom-card p,
+    .quiz-card p {
+      margin: 0;
+      line-height: 1.9;
+      color: #385141;
+      font-weight: 500;
+    }
+
+    .timeline-wrap {
+      position: relative;
+      padding-top: 8px;
+    }
+
+    .timeline-wrap::before {
+      content: "";
+      position: absolute;
+      top: 34px;
+      right: 26px;
+      left: 26px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(11,122,60,0.15), rgba(11,122,60,0.48), rgba(212,175,55,0.28));
+      z-index: 0;
+    }
+
+    .timeline-card {
+      z-index: 1;
+    }
+
+    .timeline-year {
+      width: auto;
+      min-width: 88px;
+      height: auto;
+      padding: 12px 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+
+    .interactive-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+    }
+
+    .sort-zone {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .sort-item {
+      border-radius: 18px;
+      padding: 15px 16px;
+      background: #fff;
+      border: 1px dashed rgba(11,122,60,0.22);
+      box-shadow: 0 8px 18px rgba(5,80,42,0.06);
+      cursor: grab;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      user-select: none;
+    }
+
+    .sort-item.dragging {
+      opacity: 0.45;
+      transform: scale(0.98);
+    }
+
+    .sort-index {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(11,122,60,0.11);
+      font-weight: 800;
+      color: var(--green-900);
+      flex-shrink: 0;
+    }
+
+    .result-box {
+      margin-top: 14px;
+      min-height: 60px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(11,122,60,0.06);
+      border: 1px solid rgba(11,122,60,0.12);
+      display: flex;
+      align-items: center;
+      line-height: 1.8;
+      font-weight: 700;
+      color: var(--green-900);
+    }
+
+    .quiz-card {
+      padding: 22px;
+    }
+
+    .question {
+      margin-bottom: 20px;
+      padding-bottom: 18px;
+      border-bottom: 1px dashed rgba(11,122,60,0.14);
+    }
+
+    .question:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .question-title {
+      font-weight: 800;
+      margin-bottom: 10px;
+      line-height: 1.9;
+    }
+
+    .option-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(11,122,60,0.14);
+      border-radius: 16px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.88);
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+      cursor: pointer;
+    }
+
+    .option:hover {
+      background: rgba(11,122,60,0.06);
+      border-color: rgba(11,122,60,0.26);
+      transform: translateY(-1px);
+    }
+
+    .option input {
+      accent-color: var(--green-800);
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .score-banner {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(11,122,60,0.10), rgba(212,175,55,0.12));
+      border: 1px solid rgba(11,122,60,0.14);
+      line-height: 1.95;
+      font-weight: 700;
+      color: var(--green-900);
+      display: none;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .custom-form {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      font-weight: 800;
+      color: var(--green-900);
+    }
+
+    .field input, .field textarea, .field select {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(11,122,60,0.16);
+      background: rgba(255,255,255,0.94);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .field input:focus, .field textarea:focus, .field select:focus {
+      border-color: rgba(11,122,60,0.42);
+      box-shadow: 0 0 0 4px rgba(11,122,60,0.10);
+    }
+
+    .field textarea {
+      min-height: 116px;
+      resize: vertical;
+    }
+
+    .preview-card {
+      min-height: 100%;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      justify-content: center;
+      background:
+        linear-gradient(135deg, rgba(11,122,60,0.98), rgba(23,155,78,0.96));
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preview-card::before,
+    .preview-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(255,255,255,0.14), transparent 70%);
+    }
+
+    .preview-card::before { width: 280px; height: 280px; top: -120px; right: -60px; }
+    .preview-card::after { width: 220px; height: 220px; bottom: -90px; left: -70px; }
+
+    .preview-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      font-weight: 800;
+      width: fit-content;
+    }
+
+    .preview-title {
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.16;
+      margin: 0;
+    }
+
+    .preview-name {
+      font-size: 1.24rem;
+      font-weight: 800;
+      margin: 0;
+      color: var(--gold-soft);
+    }
+
+    .preview-message {
+      margin: 0;
+      line-height: 2;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.96);
+      max-width: 52ch;
+    }
+
+    .quotes-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .quote-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .quote-mark {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 0;
+      font-size: 1.1rem;
+    }
+
+    .quote-text {
+      font-size: 1.08rem;
+      line-height: 2;
+      font-weight: 700;
+      color: var(--green-900);
+      margin: 0;
+    }
+
+    .copy-note {
+      min-height: 26px;
+      color: var(--green-800);
+      font-weight: 800;
+      margin-top: 10px;
+    }
+
+    .sources-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .source-link {
+      display: block;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.84);
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 24px rgba(5,80,42,0.08);
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .source-link:hover {
+      transform: translateY(-3px);
+      border-color: rgba(11,122,60,0.28);
+      box-shadow: 0 16px 34px rgba(5,80,42,0.14);
+    }
+
+    .source-link strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--green-900);
+      font-size: 1.02rem;
+    }
+
+    .source-link span {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.96rem;
+      display: block;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-weight: 700;
+      padding: 24px 0 12px;
+    }
+
+    .toast {
+      position: fixed;
+      inset: auto 50% 24px auto;
+      transform: translateX(50%) translateY(20px);
+      background: rgba(7, 89, 43, 0.95);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 999px;
+      box-shadow: 0 18px 34px rgba(5,80,42,0.24);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition), transform var(--transition);
+      z-index: 50;
+      font-weight: 800;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(50%) translateY(0);
+    }
+
+    .floating-actions {
+      position: fixed;
+      left: 18px;
+      bottom: 18px;
+      z-index: 40;
+      display: grid;
+      gap: 10px;
+    }
+
+    .fab {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, rgba(11,122,60,0.96), rgba(23,155,78,0.96));
+      color: white;
+      font-size: 1.1rem;
+      box-shadow: 0 14px 26px rgba(5,80,42,0.24);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .fab:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 34px rgba(5,80,42,0.3);
+    }
+
+    canvas#celebrationCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 8;
+    }
+
+    @media (max-width: 1040px) {
+      .hero,
+      .interactive-grid,
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cards-4 { grid-template-columns: repeat(2, 1fr); }
+      .cards-3, .quotes-row { grid-template-columns: 1fr; }
+      .cards-2 { grid-template-columns: 1fr; }
+      .hero-main { min-height: auto; }
+    }
+
+    @media (max-width: 720px) {
+      .page { width: min(100% - 18px, 100%); }
+      .topbar { border-radius: 28px; }
+      .stats, .mini-grid { grid-template-columns: 1fr; }
+      .cards-4 { grid-template-columns: 1fr; }
+      .hero-main, .hero-side, .info-card, .timeline-card, .tool-card, .quote-card, .quiz-card, .custom-card { padding: 18px; }
+      .hero-main h2 { max-width: 100%; }
+      .section-head { align-items: start; }
+      .floating-actions { left: 12px; bottom: 12px; }
+      .fab { width: 48px; height: 48px; border-radius: 16px; }
+    }
+
+    @media print {
+      .topbar, .floating-actions, .hero-actions .ghost-btn, .hero-actions .solid-btn:not(.printable), .copy-btn, #challengeActions, #quizActions {
+        display: none !important;
+      }
+      body { background: white; }
+      .panel, .info-card, .timeline-card, .tool-card, .quote-card, .quiz-card, .custom-card {
+        box-shadow: none;
+        border: 1px solid #d8e6dc;
+      }
+      canvas#celebrationCanvas { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="celebrationCanvas" aria-hidden="true"></canvas>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">🇸🇦</div>
+        <div>
+          <h1>تطبيق يوم العلم السعودي</h1>
+          <p>واجهة تفاعلية مدرسية جاهزة للعرض والأنشطة السريعة</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#home">الرئيسية</a>
+        <a href="#meaning">الرمزية</a>
+        <a href="#history">المحطات</a>
+        <a href="#challenge">التحدي</a>
+        <a href="#card">بطاقة تهنئة</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="hero-main panel">
+        <div class="eyebrow">✨ مناسبة وطنية خالدة</div>
+        <h2>يوم العلم السعودي</h2>
+        <p class="lead">
+          تطبيق تفاعلي يحتفي براية المملكة، ويعرض رمزية العلم السعودي ومحطاته التاريخية في قالب بصري مشوّق مناسب للعرض داخل الصف أو في الفعاليات المدرسية.
+        </p>
+
+        <div class="hero-actions">
+          <a class="solid-btn" href="#challenge">ابدأ التحدي</a>
+          <button class="ghost-btn" id="printPageBtn">طباعة أو حفظ PDF</button>
+          <button class="ghost-btn" id="celebrateBtn">تشغيل الاحتفال</button>
+        </div>
+
+        <div class="stats" aria-label="أهم المعلومات">
+          <div class="stat">
+            <div class="value">١١ مارس</div>
+            <div class="label">اليوم الذي يُحتفى فيه سنويًا بيوم العلم السعودي.</div>
+          </div>
+          <div class="stat">
+            <div class="value">١٩٣٧م</div>
+            <div class="label">السنة التي أُقِرَّ فيها شكل العلم السعودي الذي نراه اليوم.</div>
+          </div>
+          <div class="stat">
+            <div class="value">٢٠٢٣م</div>
+            <div class="label">صدور الأمر الملكي بجعل ١١ مارس يومًا خاصًا بالعلم.</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-side panel" aria-label="بيانات اليوم">
+        <div class="date-badge">
+          <div class="tag">📅 التاريخ المتجدد</div>
+          <h3>١١ مارس</h3>
+          <p id="countdownText">يتم حساب الوقت المتبقي للاحتفاء القادم…</p>
+        </div>
+
+        <div class="mini-grid">
+          <div class="mini-card">
+            <div class="mini-title">اليوم الميلادي</div>
+            <strong id="gregorianDate">—</strong>
+          </div>
+          <div class="mini-card">
+            <div class="mini-title">اليوم الهجري</div>
+            <strong id="hijriDate">—</strong>
+          </div>
+          <div class="mini-card">
+            <div class="mini-title">الوقت الآن</div>
+            <strong id="liveTime">—</strong>
+          </div>
+          <div class="mini-card">
+            <div class="mini-title">رسالة اليوم</div>
+            <strong id="dailyMessage">العلم راية مجد ووحدة.</strong>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="meaning">
+      <div class="section-head">
+        <div>
+          <h3>رمزية العلم السعودي</h3>
+          <p>
+            هذه البطاقات تلخص أبرز الدلالات الوطنية التي يتضمنها العلم السعودي، بأسلوب بصري سريع يناسب الطلاب والعروض الصفية.
+          </p>
+        </div>
+        <span class="chip">انقر ذهنيًا واستعرض المعنى</span>
+      </div>
+
+      <div class="cards-4">
+        <article class="info-card">
+          <div class="info-icon">☘️</div>
+          <h4>اللون الأخضر</h4>
+          <p>يرمز إلى النماء والخصب، ويحمل حضورًا بصريًا يعكس الأمل والاستمرارية والازدهار.</p>
+        </article>
+        <article class="info-card">
+          <div class="info-icon">⚖️</div>
+          <h4>السيف</h4>
+          <p>يرمز إلى العدل والقوة والهيبة، ويجسد قيمة راسخة في الدولة السعودية وتاريخها.</p>
+        </article>
+        <article class="info-card">
+          <div class="info-icon">🤍</div>
+          <h4>الكتابة البيضاء</h4>
+          <p>يرتبط اللون الأبيض بدلالات السلام والنقاء، ويمنح التكوين وضوحًا وجلالًا بصريًا.</p>
+        </article>
+        <article class="info-card">
+          <div class="info-icon">🇸🇦</div>
+          <h4>مكانة العلم</h4>
+          <p>العلم رمز للوحدة الوطنية والاعتزاز بالهوية السعودية الممتدة عبر تاريخ الدولة ومراحلها.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="history">
+      <div class="section-head">
+        <div>
+          <h3>محطات تاريخية سريعة</h3>
+          <p>
+            خط زمني مبسط يساعدك على تقديم الفكرة للطلاب أو للزوار بطريقة واضحة وسهلة الحفظ والاسترجاع.
+          </p>
+        </div>
+        <span class="chip">تاريخ يرويه العلم</span>
+      </div>
+
+      <div class="timeline-wrap cards-3">
+        <article class="timeline-card">
+          <div class="timeline-year">١٧٢٧م</div>
+          <h4>امتداد القيمة الوطنية</h4>
+          <p>ترتبط قيمة العلم بتاريخ الدولة السعودية منذ تأسيسها، بوصفه رمزًا جامعًا للهوية والوحدة.</p>
+        </article>
+        <article class="timeline-card">
+          <div class="timeline-year">١١ مارس ١٩٣٧م</div>
+          <h4>إقرار الشكل الحالي</h4>
+          <p>في هذا التاريخ أُقِرَّ العلم السعودي بالشكل الذي نراه اليوم يرفرف في سماء المملكة.</p>
+        </article>
+        <article class="timeline-card">
+          <div class="timeline-year">١ مارس ٢٠٢٣م</div>
+          <h4>الأمر الملكي</h4>
+          <p>صدر الأمر الملكي بأن يكون يوم ١١ مارس من كل عام يومًا خاصًا بالعلم باسم: يوم العلم.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="challenge">
+      <div class="section-head">
+        <div>
+          <h3>تحدٍّ تفاعلي</h3>
+          <p>
+            حرّك البطاقات لترتب الأحداث من الأقدم إلى الأحدث، ثم اختبر معلوماتك في أسئلة سريعة، لتجعل العرض أكثر تفاعلًا ومتعة.
+          </p>
+        </div>
+        <span class="chip">نشاط مناسب للطلاب</span>
+      </div>
+
+      <div class="interactive-grid">
+        <article class="tool-card">
+          <h4>رتّب الأحداث التاريخية</h4>
+          <p>اسحب البطاقات لتكوين التسلسل الصحيح من البداية إلى الأحدث، ثم اضغط على زر التحقق.</p>
+          <div class="sort-zone" id="sortableList">
+            <div class="sort-item" draggable="true" data-order="3">
+              <div class="sort-index">١</div>
+              <div>صدر الأمر الملكي بجعل ١١ مارس يومًا خاصًا بالعلم.</div>
+            </div>
+            <div class="sort-item" draggable="true" data-order="1">
+              <div class="sort-index">٢</div>
+              <div>ارتبطت قيمة العلم بتاريخ الدولة السعودية منذ تأسيسها.</div>
+            </div>
+            <div class="sort-item" draggable="true" data-order="2">
+              <div class="sort-index">٣</div>
+              <div>أُقِرَّ شكل العلم السعودي الذي نراه اليوم.</div>
+            </div>
+          </div>
+          <div id="challengeActions" class="hero-actions" style="margin-top:16px;margin-bottom:0;">
+            <button class="solid-btn" id="checkOrderBtn">تحقق من الترتيب</button>
+            <button class="ghost-btn" id="shuffleOrderBtn">إعادة خلط</button>
+          </div>
+          <div class="result-box" id="orderResult">رتّب البطاقات أولًا ثم اضغط على التحقق.</div>
+        </article>
+
+        <article class="quiz-card">
+          <h4>اختبر معلوماتك</h4>
+          <p style="margin-top:0; margin-bottom:18px; color:#385141; line-height:1.9;">اختر الإجابة الصحيحة، ثم اعرف نتيجتك مباشرة مع رسالة تشجيعية.</p>
+          <form id="quizForm"></form>
+          <div id="quizActions" class="hero-actions" style="margin-top:18px; margin-bottom:0;">
+            <button type="button" class="solid-btn" id="submitQuizBtn">إظهار النتيجة</button>
+            <button type="button" class="ghost-btn" id="resetQuizBtn">إعادة المحاولة</button>
+          </div>
+          <div class="score-banner" id="quizResult"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="card">
+      <div class="section-head">
+        <div>
+          <h3>بطاقة تهنئة باسمك</h3>
+          <p>
+            اكتب اسمك ورسالتك القصيرة، وسيقوم التطبيق بتوليد بطاقة تهنئة جاهزة للعرض أو الطباعة أو النسخ.
+          </p>
+        </div>
+        <span class="chip">مفيد للفعاليات المدرسية</span>
+      </div>
+
+      <div class="tools-grid">
+        <article class="custom-card">
+          <h4>أنشئ بطاقتك</h4>
+          <p>يمكنك تخصيص الاسم والرسالة في ثوانٍ، مع الاحتفاظ بالهوية الوطنية للتصميم.</p>
+          <div class="custom-form">
+            <div class="field">
+              <label for="nameInput">الاسم</label>
+              <input id="nameInput" type="text" placeholder="اكتب اسمك هنا" value="ضيف الشرف" />
+            </div>
+            <div class="field">
+              <label for="titleInput">العنوان المختصر</label>
+              <input id="titleInput" type="text" placeholder="مثال: فخر واعتزاز" value="فخر واعتزاز" />
+            </div>
+            <div class="field">
+              <label for="messageInput">رسالة التهنئة</label>
+              <textarea id="messageInput" placeholder="اكتب عبارة مناسبة ليوم العلم السعودي">في يوم العلم السعودي نجدد الاعتزاز براية الوطن، ونفتخر بتاريخها ورمزيتها ومكانتها في القلوب.</textarea>
+            </div>
+            <div class="hero-actions" style="margin-bottom:0;">
+              <button class="solid-btn" id="updateCardBtn">تحديث البطاقة</button>
+              <button class="ghost-btn copy-btn" id="copyCardBtn">نسخ النص</button>
+              <button class="ghost-btn" id="printCardBtn">طباعة البطاقة</button>
+            </div>
+            <div class="copy-note" id="copyNote"></div>
+          </div>
+        </article>
+
+        <article class="preview-card panel" id="cardPreviewArea">
+          <div class="preview-badge">🇸🇦 يوم العلم السعودي</div>
+          <p class="preview-title" id="previewTitle">فخر واعتزاز</p>
+          <p class="preview-name" id="previewName">ضيف الشرف</p>
+          <p class="preview-message" id="previewMessage">في يوم العلم السعودي نجدد الاعتزاز براية الوطن، ونفتخر بتاريخها ورمزيتها ومكانتها في القلوب.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h3>عبارات جاهزة للمشاركة</h3>
+          <p>ثلاث عبارات قصيرة يمكن نسخها واستخدامها في الإذاعة المدرسية أو الدعوات أو الحسابات الرسمية.</p>
+        </div>
+        <span class="chip">جاهزة للنسخ</span>
+      </div>
+
+      <div class="quotes-row">
+        <article class="quote-card">
+          <div class="quote-mark">✦</div>
+          <p class="quote-text" data-copy="يوم العلم السعودي مناسبة وطنية نعتز فيها براية المجد والوحدة والهوية الراسخة.">يوم العلم السعودي مناسبة وطنية نعتز فيها براية المجد والوحدة والهوية الراسخة.</p>
+          <button class="ghost-btn copy-btn">نسخ العبارة</button>
+        </article>
+        <article class="quote-card">
+          <div class="quote-mark">✦</div>
+          <p class="quote-text" data-copy="علم المملكة ليس راية فحسب، بل رمز تاريخ وقيم ووحدة وطنية نفخر بها كل يوم.">علم المملكة ليس راية فحسب، بل رمز تاريخ وقيم ووحدة وطنية نفخر بها كل يوم.</p>
+          <button class="ghost-btn copy-btn">نسخ العبارة</button>
+        </article>
+        <article class="quote-card">
+          <div class="quote-mark">✦</div>
+          <p class="quote-text" data-copy="في ١١ مارس نستحضر مكانة العلم السعودي، ونجدد الولاء والانتماء والاعتزاز بالوطن.">في ١١ مارس نستحضر مكانة العلم السعودي، ونجدد الولاء والانتماء والاعتزاز بالوطن.</p>
+          <button class="ghost-btn copy-btn">نسخ العبارة</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="sources">
+      <div class="section-head">
+        <div>
+          <h3>مصادر رسمية</h3>
+          <p>تم بناء المعلومات التاريخية والرمزية الأساسية في هذا التطبيق استنادًا إلى مواد حكومية ورسمية سعودية.</p>
+        </div>
+        <span class="chip">روابط مرجعية</span>
+      </div>
+
+      <div class="sources-list">
+        <a class="source-link" href="https://my.gov.sa/ar/content/culture" target="_blank" rel="noopener noreferrer">
+          <strong>البوابة الوطنية السعودية</strong>
+          <span>تعرض صفحة الثقافة في البوابة الوطنية أن يوم العلم يوافق ١١ مارس ويُحتفى به تكريمًا للعلم السعودي.</span>
+        </a>
+        <a class="source-link" href="https://www.spa.gov.sa/w1862976" target="_blank" rel="noopener noreferrer">
+          <strong>وكالة الأنباء السعودية — الأمر الملكي</strong>
+          <span>يوضح الأمر الملكي أن ١١ مارس من كل عام يوم خاص بالعلم، مع الإشارة إلى ١١ مارس ١٩٣٧م بوصفه تاريخ إقرار شكله الحالي.</span>
+        </a>
+        <a class="source-link" href="https://spa.gov.sa/N2278886" target="_blank" rel="noopener noreferrer">
+          <strong>وكالة الأنباء السعودية — تقرير رمزية العلم</strong>
+          <span>يورد التقرير مدلولات اللون الأخضر واللون الأبيض والسيف، ويؤكد امتداد قيمة العلم منذ تأسيس الدولة السعودية.</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      فكرة وتصميم أ/فاطمة هزازي
+    </footer>
+  </div>
+
+  <div class="floating-actions" aria-label="أدوات سريعة">
+    <button class="fab" id="scrollTopBtn" title="العودة للأعلى">⬆️</button>
+    <button class="fab" id="fullScreenBtn" title="ملء الشاشة">⛶</button>
+  </div>
+
+  <div class="toast" id="toast">تم النسخ بنجاح</div>
+
+  <script>
+    const arabicDigits = (value) => String(value).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+
+    const gregorianDateEl = document.getElementById('gregorianDate');
+    const hijriDateEl = document.getElementById('hijriDate');
+    const liveTimeEl = document.getElementById('liveTime');
+    const countdownTextEl = document.getElementById('countdownText');
+    const dailyMessageEl = document.getElementById('dailyMessage');
+    const toastEl = document.getElementById('toast');
+
+    const dailyMessages = [
+      'العلم راية مجد ووحدة.',
+      'نعتز براية الوطن كل يوم.',
+      'يوم العلم مناسبة فخر وانتماء.',
+      'راية المملكة رمز عزٍّ ووحدة.',
+      'العلم قصة وطنٍ وقيم.'
+    ];
+
+    function showToast(message) {
+      toastEl.textContent = message;
+      toastEl.classList.add('show');
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => toastEl.classList.remove('show'), 1800);
+    }
+
+    function updateDateTime() {
+      const now = new Date();
+      const gregorian = new Intl.DateTimeFormat('ar-SA', {
+        dateStyle: 'full'
+      }).format(now);
+
+      const hijri = new Intl.DateTimeFormat('ar-SA-u-ca-islamic', {
+        dateStyle: 'full'
+      }).format(now);
+
+      const time = new Intl.DateTimeFormat('ar-SA', {
+        hour: 'numeric',
+        minute: '2-digit',
+        second: '2-digit'
+      }).format(now);
+
+      gregorianDateEl.textContent = gregorian;
+      hijriDateEl.textContent = hijri;
+      liveTimeEl.textContent = time;
+      dailyMessageEl.textContent = dailyMessages[now.getDate() % dailyMessages.length];
+
+      const year = now.getFullYear();
+      const month = now.getMonth();
+      const date = now.getDate();
+      const currentYearFlagDay = new Date(year, 2, 11, 0, 0, 0, 0);
+      let nextFlagDay = new Date(year, 2, 11, 0, 0, 0, 0);
+
+      if (month > 2 || (month === 2 && date > 11)) {
+        nextFlagDay = new Date(year + 1, 2, 11, 0, 0, 0, 0);
+      }
+
+      if (month === 2 && date === 11) {
+        countdownTextEl.textContent = 'اليوم نحتفي بيوم العلم السعودي؛ يومٌ للفخر والاعتزاز براية الوطن.';
+      } else {
+        const diff = nextFlagDay - now;
+        const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+        countdownTextEl.textContent = `متبقٍ ${arabicDigits(days)} يومًا على يوم العلم القادم.`;
+      }
+    }
+
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+
+    document.getElementById('printPageBtn').addEventListener('click', () => window.print());
+    document.getElementById('scrollTopBtn').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    document.getElementById('fullScreenBtn').addEventListener('click', async () => {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        await document.exitFullscreen().catch(() => {});
+      }
+    });
+
+    // Celebration canvas
+    const canvas = document.getElementById('celebrationCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let celebrating = false;
+
+    function resizeCanvas() {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    function launchCelebration(duration = 2200) {
+      celebrating = true;
+      particles = Array.from({ length: 150 }, () => ({
+        x: Math.random() * window.innerWidth,
+        y: -20 - Math.random() * window.innerHeight * 0.4,
+        size: 4 + Math.random() * 8,
+        speedY: 2 + Math.random() * 4,
+        speedX: -2 + Math.random() * 4,
+        rotate: Math.random() * Math.PI,
+        spin: -0.08 + Math.random() * 0.16,
+        shape: Math.random() > 0.5 ? 'rect' : 'circle',
+        color: Math.random() > 0.25 ? 'rgba(11,122,60,0.9)' : 'rgba(212,175,55,0.9)'
+      }));
+
+      const start = performance.now();
+      function frame(now) {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        particles.forEach(p => {
+          p.x += p.speedX;
+          p.y += p.speedY;
+          p.rotate += p.spin;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rotate);
+          ctx.fillStyle = p.color;
+          if (p.shape === 'rect') {
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.72);
+          } else {
+            ctx.beginPath();
+            ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.restore();
+        });
+
+        if (now - start < duration) {
+          requestAnimationFrame(frame);
+        } else {
+          ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+          celebrating = false;
+        }
+      }
+      requestAnimationFrame(frame);
+    }
+
+    document.getElementById('celebrateBtn').addEventListener('click', () => {
+      launchCelebration();
+      showToast('بدأت الأجواء الاحتفالية ✨');
+    });
+
+    // Sort challenge
+    const sortableList = document.getElementById('sortableList');
+    let draggedItem = null;
+
+    function refreshSortIndexes() {
+      [...sortableList.children].forEach((item, index) => {
+        item.querySelector('.sort-index').textContent = arabicDigits(index + 1);
+      });
+    }
+
+    sortableList.addEventListener('dragstart', (e) => {
+      const item = e.target.closest('.sort-item');
+      if (!item) return;
+      draggedItem = item;
+      item.classList.add('dragging');
+    });
+
+    sortableList.addEventListener('dragend', (e) => {
+      const item = e.target.closest('.sort-item');
+      if (!item) return;
+      item.classList.remove('dragging');
+      draggedItem = null;
+      refreshSortIndexes();
+    });
+
+    sortableList.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      const afterElement = [...sortableList.querySelectorAll('.sort-item:not(.dragging)')].find(child => {
+        const rect = child.getBoundingClientRect();
+        return e.clientY < rect.top + rect.height / 2;
+      });
+      if (!draggedItem) return;
+      if (!afterElement) {
+        sortableList.appendChild(draggedItem);
+      } else {
+        sortableList.insertBefore(draggedItem, afterElement);
+      }
+    });
+
+    function shuffleChildren(parent) {
+      const items = [...parent.children];
+      for (let i = items.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [items[i], items[j]] = [items[j], items[i]];
+      }
+      items.forEach(item => parent.appendChild(item));
+      refreshSortIndexes();
+    }
+
+    document.getElementById('shuffleOrderBtn').addEventListener('click', () => {
+      shuffleChildren(sortableList);
+      document.getElementById('orderResult').textContent = 'أُعيد خلط البطاقات. حاول من جديد.';
+    });
+
+    document.getElementById('checkOrderBtn').addEventListener('click', () => {
+      const orders = [...sortableList.children].map(item => Number(item.dataset.order));
+      const correct = orders.every((value, index) => value === index + 1);
+      const result = document.getElementById('orderResult');
+      if (correct) {
+        result.textContent = 'أحسنت! رتّبت الأحداث ترتيبًا صحيحًا من الأقدم إلى الأحدث.';
+        launchCelebration(1800);
+      } else {
+        result.textContent = 'الترتيب غير مكتمل بعد. تذكر: البداية من امتداد القيمة التاريخية، ثم إقرار الشكل الحالي، ثم الأمر الملكي.';
+      }
+    });
+
+    refreshSortIndexes();
+
+    // Quiz
+    const quizData = [
+      {
+        question: 'متى يوافق يوم العلم السعودي من كل عام؟',
+        options: ['١ فبراير', '١١ مارس', '٢٣ سبتمبر'],
+        answer: '١١ مارس'
+      },
+      {
+        question: 'إلى ماذا يرمز السيف في العلم السعودي؟',
+        options: ['العدل', 'البحر', 'الزراعة'],
+        answer: 'العدل'
+      },
+      {
+        question: 'ما السنة التي أُقِرَّ فيها شكل العلم الحالي؟',
+        options: ['١٩٣٧م', '١٩٧٣م', '٢٠٢٣م'],
+        answer: '١٩٣٧م'
+      },
+      {
+        question: 'ما اللون الغالب على العلم السعودي؟',
+        options: ['الأحمر', 'الأزرق', 'الأخضر'],
+        answer: 'الأخضر'
+      },
+      {
+        question: 'صدر الأمر الملكي بجعل ١١ مارس يومًا خاصًا بالعلم في عام:',
+        options: ['٢٠١٣م', '٢٠٢٣م', '٢٠٢٦م'],
+        answer: '٢٠٢٣م'
+      }
+    ];
+
+    const quizForm = document.getElementById('quizForm');
+    const quizResult = document.getElementById('quizResult');
+
+    function renderQuiz() {
+      quizForm.innerHTML = quizData.map((q, qi) => `
+        <div class="question">
+          <div class="question-title">${arabicDigits(qi + 1)}. ${q.question}</div>
+          <div class="option-list">
+            ${q.options.map((option, oi) => `
+              <label class="option">
+                <input type="radio" name="q${qi}" value="${option}">
+                <span>${option}</span>
+              </label>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+    renderQuiz();
+
+    document.getElementById('submitQuizBtn').addEventListener('click', () => {
+      let score = 0;
+      quizData.forEach((q, i) => {
+        const checked = quizForm.querySelector(`input[name="q${i}"]:checked`);
+        if (checked && checked.value === q.answer) score += 1;
+      });
+
+      const percentage = Math.round((score / quizData.length) * 100);
+      let message = 'بداية جميلة، أعد المحاولة لتصل إلى نتيجة أعلى.';
+      if (score === quizData.length) message = 'ممتاز جدًا! إجابة كاملة تدل على وعي رائع بيوم العلم.';
+      else if (score >= 4) message = 'أحسنت! نتيجة قوية جدًا.';
+      else if (score >= 3) message = 'نتيجة طيبة، اقتربت كثيرًا من العلامة الكاملة.';
+
+      quizResult.style.display = 'block';
+      quizResult.innerHTML = `نتيجتك: <strong>${arabicDigits(score)}</strong> من <strong>${arabicDigits(quizData.length)}</strong> (${arabicDigits(percentage)}٪).<br>${message}`;
+
+      if (score >= 4) {
+        launchCelebration(2000);
+      }
+    });
+
+    document.getElementById('resetQuizBtn').addEventListener('click', () => {
+      quizForm.reset();
+      quizResult.style.display = 'none';
+    });
+
+    // Card customization
+    const nameInput = document.getElementById('nameInput');
+    const titleInput = document.getElementById('titleInput');
+    const messageInput = document.getElementById('messageInput');
+    const previewName = document.getElementById('previewName');
+    const previewTitle = document.getElementById('previewTitle');
+    const previewMessage = document.getElementById('previewMessage');
+
+    function updateCardPreview() {
+      previewName.textContent = nameInput.value.trim() || 'ضيف الشرف';
+      previewTitle.textContent = titleInput.value.trim() || 'فخر واعتزاز';
+      previewMessage.textContent = messageInput.value.trim() || 'في يوم العلم السعودي نجدد الاعتزاز براية الوطن.';
+    }
+
+    document.getElementById('updateCardBtn').addEventListener('click', updateCardPreview);
+    ['input', 'change'].forEach(evt => {
+      nameInput.addEventListener(evt, updateCardPreview);
+      titleInput.addEventListener(evt, updateCardPreview);
+      messageInput.addEventListener(evt, updateCardPreview);
+    });
+
+    document.getElementById('copyCardBtn').addEventListener('click', async () => {
+      updateCardPreview();
+      const text = `${previewTitle.textContent}\n${previewName.textContent}\n${previewMessage.textContent}`;
+      try {
+        await navigator.clipboard.writeText(text);
+        document.getElementById('copyNote').textContent = 'تم نسخ نص البطاقة.';
+        showToast('تم نسخ نص البطاقة');
+      } catch {
+        document.getElementById('copyNote').textContent = 'تعذر النسخ التلقائي؛ انسخ النص يدويًا.';
+      }
+    });
+
+    document.getElementById('printCardBtn').addEventListener('click', () => {
+      updateCardPreview();
+      window.print();
+    });
+
+    // Quote copying
+    document.querySelectorAll('.quote-card .copy-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const text = btn.parentElement.querySelector('.quote-text').dataset.copy;
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast('تم نسخ العبارة');
+        } catch {
+          showToast('تعذر النسخ التلقائي');
+        }
+      });
+    });
+
+    // small initial celebration only on flag day
+    const today = new Date();
+    if (today.getMonth() === 2 && today.getDate() === 11) {
+      setTimeout(() => launchCelebration(1500), 700);
+    }
+  </script>
+</body>
+</html>
